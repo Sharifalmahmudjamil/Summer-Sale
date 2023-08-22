@@ -17,18 +17,7 @@ function cardClick(text){
   const product=document.getElementById('product-price').innerText=total;
 
   if(product> 200){
-    const discountPrice=totalPrice/100;
-    const discount= discountPrice*20;
-    // console.log(discount);
-    const disTowDEcimal=discount.toFixed(2);
-    // console.log(disTowDEcimal);
-    const disPrice=document.getElementById('discount').innerText=discount;
-    const disPriceTwoDecimal=disPrice.toFixed(3);
 
-
-    const totalDiscountPrice=totalPrice-disPriceTwoDecimal;
-    // console.log(totalDiscountPrice);
-    document.getElementById('product-price').innerText=totalDiscountPrice;
   }
   if(total>=200){
     apply.removeAttribute('disabled');
@@ -37,6 +26,16 @@ function cardClick(text){
   else{
     apply.setAttribute('disabled',true);
   }
+
+
+  if(total>0){
+    make.removeAttribute('disabled');
+    
+  }
+  else{
+    make.setAttribute('disabled',true);
+  }
+
 
 
 
@@ -57,11 +56,30 @@ function cardClick(text){
   applyButton.addEventListener('click', function() {
       const enteredCouponCode = couponInput.value.toUpperCase();
       if (validCouponCodes.includes(enteredCouponCode)) {
-        
+        const discountPrice=totalPrice/100;
+        const discount= discountPrice*20;
+        // console.log(discount);
+        const disTowDEcimal=discount.toFixed(2);
+        // console.log(disTowDEcimal);
+        const disPrice=document.getElementById('discount').innerText=discount;
+        const disPriceTwoDecimal=disPrice.toFixed(2);
+    
+    
+        const totalDiscountPrice=totalPrice-disPriceTwoDecimal;
+        // console.log(totalDiscountPrice);
+        document.getElementById('product-price').innerText=totalDiscountPrice;
         
       } 
       
   });
+
+  const linkButton = document.getElementById('home');
+
+        linkButton.addEventListener('click', function() {
+            
+            location.reload();
+        });
+
 
 
 }
