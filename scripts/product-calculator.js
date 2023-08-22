@@ -19,7 +19,50 @@ function cardClick(text){
   if(product> 200){
     const discountPrice=totalPrice/100;
     const discount= discountPrice*20;
+    // console.log(discount);
+    const disTowDEcimal=discount.toFixed(2);
+    // console.log(disTowDEcimal);
+    const disPrice=document.getElementById('discount').innerText=discount;
+    const disPriceTwoDecimal=disPrice.toFixed(3);
+
+
+    const totalDiscountPrice=totalPrice-disPriceTwoDecimal;
+    // console.log(totalDiscountPrice);
+    document.getElementById('product-price').innerText=totalDiscountPrice;
   }
-  
+  if(total>=200){
+    apply.removeAttribute('disabled');
+    
+  }
+  else{
+    apply.setAttribute('disabled',true);
+  }
+
+
+
+  const validCouponCodes = ['SELL200'];
+  const couponInput = document.getElementById('couponCode');
+  const applyButton = document.getElementById('apply');
+
+  couponInput.addEventListener('input', function() {
+      const enteredCouponCode = couponInput.value.toUpperCase();
+
+      if (validCouponCodes.includes(enteredCouponCode)) {
+          applyButton.disabled = false; 
+      } else {
+          applyButton.disabled = true;
+      }
+  });
+
+  applyButton.addEventListener('click', function() {
+      const enteredCouponCode = couponInput.value.toUpperCase();
+      if (validCouponCodes.includes(enteredCouponCode)) {
+        
+        
+      } 
+      
+  });
+
 
 }
+
